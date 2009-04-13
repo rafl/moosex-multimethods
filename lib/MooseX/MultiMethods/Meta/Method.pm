@@ -31,7 +31,7 @@ method initialize_body {
     return sub {
         my ($args) = \@_;
 
-        if (my ($result, $type) = $variant_table->find_variant([$args, {}])) {
+        if (my ($result, $type) = $variant_table->find_variant($args)) {
             my $method = $result->body;
             goto $method;
         }
