@@ -1,3 +1,7 @@
+0.03  Fri, 08 May 2009 00:33:59 +0200
+  * Redispatch upwards if possible, instead of quickly resigning to an error
+    when no variant was found in a class (Sartak).
+
 0.02  Wed, 22 Apr 2009 01:56:49 +0200
   * Depend on MooseX::Types::VariantTable 0.02.
     It sorts Types topologically now. All variants in a single
