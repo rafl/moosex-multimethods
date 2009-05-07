@@ -36,6 +36,11 @@ method initialize_body {
             goto $method;
         }
 
+        if (my $super = $self->associated_metaclass->find_next_method_by_name($name)) {
+            my $method = $super->body;
+            goto $method;
+        }
+
         confess "no variant of method '${name}' found for ", dump($args);
     };
 }
