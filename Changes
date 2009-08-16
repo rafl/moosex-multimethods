@@ -1,3 +1,7 @@
+0.04  Sun, 16 Aug 2009 12:00:01 +0200
+  * Only set up MXMS for the caller if it doesn't already have a method keyword
+    installed (Closes RT#46705).
+
 0.03  Fri, 08 May 2009 00:33:59 +0200
   * Redispatch upwards if possible, instead of quickly resigning to an error
     when no variant was found in a class (Sartak).
