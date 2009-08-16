@@ -103,7 +103,8 @@ method setup_for (ClassName $class: ClassName $setup_class, HashRef $args = {}) 
         as   => 'multi',
     });
 
-    MooseX::Method::Signatures->setup_for($setup_class);
+    MooseX::Method::Signatures->setup_for($setup_class)
+        unless $setup_class->can('method');
 }
 
 method parse {
