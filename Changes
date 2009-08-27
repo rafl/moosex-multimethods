@@ -1,3 +1,6 @@
+0.05  Thu, 27 Aug 2009 15:39:40 +0200
+  * Adapt to MooseX::Method::Signatures 0.22.
+
 0.04  Sun, 16 Aug 2009 12:00:01 +0200
   * Only set up MXMS for the caller if it doesn't already have a method keyword
     installed (Closes RT#46705).
