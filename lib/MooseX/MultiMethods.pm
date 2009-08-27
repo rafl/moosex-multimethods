@@ -122,13 +122,13 @@ method parse {
         unless defined $name && length $name;
 
     my $proto = $self->strip_proto || '';
-    my $variant = MooseX::Method::Signatures::Meta::Method->wrap(
+    my $proto_variant = MooseX::Method::Signatures::Meta::Method->wrap(
         signature    => "(${proto})",
         package_name => $self->get_curstash_name,
         name         => $name,
     );
 
-    $self->inject_if_block($self->scope_injector_call . $variant->injectable_code, 'sub');
+    $self->inject_if_block($self->scope_injector_call . $proto_variant->injectable_code, 'sub');
 
     my $meta = Class::MOP::class_of($self->class);
     my $meta_method = $meta->get_method($name);
@@ -144,7 +144,7 @@ method parse {
         unless $meta_method->isa(MetaMethod);
 
     $self->shadow(sub {
-        $variant->_set_actual_body($_[0]);
+        my $variant = $proto_variant->clone(actual_body => $_[0]);
         $meta_method->add_variant($variant->type_constraint => $variant);
     });
 }
