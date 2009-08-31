@@ -1,11 +1,15 @@
 use strict;
 use warnings;
-use Test::More tests => 2;
+use Test::More;
 
 BEGIN {
     eval 'use MooseX::Declare (); use Test::NoWarnings;';
     plan skip_all => 'MooseX::Declare and Test::NoWarnings required'
         if $@;
+}
+
+BEGIN {
+    plan tests => 2;
 }
 
 use FindBin;
