@@ -1,3 +1,6 @@
+0.06  Mon, 31 Aug 2009 19:18:03 +0200
+  * Adapt to yet another change in MooseX::Method::Signatures 0.24.
+
 0.05  Thu, 27 Aug 2009 15:39:40 +0200
   * Adapt to MooseX::Method::Signatures 0.22.
 
