@@ -144,7 +144,7 @@ method parse {
         unless $meta_method->isa(MetaMethod);
 
     $self->shadow(sub {
-        my $variant = $proto_variant->clone(actual_body => $_[0]);
+        my $variant = $proto_variant->reify(actual_body => $_[0]);
         $meta_method->add_variant($variant->type_constraint => $variant);
     });
 }
