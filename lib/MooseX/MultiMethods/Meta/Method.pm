@@ -1,5 +1,6 @@
 package MooseX::MultiMethods::Meta::Method;
 
+use Carp;
 use Moose;
 use MooseX::Method::Signatures;
 use MooseX::Types::Moose qw/CodeRef/;
@@ -13,7 +14,18 @@ extends 'Moose::Object', 'Moose::Meta::Method';
 has _variant_table => (
     is      => 'ro',
     isa     => VariantTable,
-    default => sub { VariantTable->new },
+    default => sub {
+        VariantTable->new(
+            ambigious_match_callback => sub {
+                my ($self, $value, @matches) = @_;
+                local $Carp::CarpLevel = 2;
+                croak sprintf 'Ambiguous match for multi method %s: %s with value %s',
+                    $matches[0]->{value}->name,
+                    join(q{, }, map { $_->{value}->signature } @matches),
+                    dump($value);
+            },
+        );
+    },
     handles => [qw/add_variant/],
 );
 
