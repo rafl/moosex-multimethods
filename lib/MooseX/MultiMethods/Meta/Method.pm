@@ -43,17 +43,13 @@ method initialize_body {
     return sub {
         my ($args) = \@_;
 
-        if (my ($result, $type) = $variant_table->find_variant($args)) {
-            my $method = $result->body;
-            goto $method;
-        }
+        my $result = $variant_table->find_variant($args)
+            || $self->associated_metaclass->find_next_method_by_name($name);
 
-        if (my $super = $self->associated_metaclass->find_next_method_by_name($name)) {
-            my $method = $super->body;
-            goto $method;
-        }
+        confess "no variant of method '${name}' found for ", dump($args)
+            unless $result;
 
-        confess "no variant of method '${name}' found for ", dump($args);
+        goto $result->body;
     };
 }
 
