@@ -1,3 +1,6 @@
+0.08  Mon, 28 Sep 2009 18:03:14 +0200
+  * Implement better error reporting on ambiguous matches.
+
 0.07  Mon, 31 Aug 2009 19:51:44 +0200
   * Fix failure in t/mxd.t if MooseX::Declare isn't available.
 
