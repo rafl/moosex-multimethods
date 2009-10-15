@@ -1,3 +1,7 @@
+0.09  Thu, 15 Oct 2009 23:47:36 +0200
+  * Depend on MooseX::Method::Signatures 0.29 because 0.28 slightly broken in a
+    way that caused utter fail with multi methods. Reported by Justin Hunter.
+
 0.08  Mon, 28 Sep 2009 18:03:14 +0200
   * Implement better error reporting on ambiguous matches.
 
