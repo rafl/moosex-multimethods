@@ -44,7 +44,7 @@ method initialize_body {
         my ($args) = \@_;
 
         my $result = $variant_table->find_variant($args)
-            || $self->associated_metaclass->find_next_method_by_name($name);
+            || Class::MOP::class_of($args->[0])->find_next_method_by_name($name);
 
         confess "no variant of method '${name}' found for ", dump($args)
             unless $result;
