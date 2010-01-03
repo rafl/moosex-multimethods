@@ -1,3 +1,7 @@
+0.10  Sun, 03 Jan 2010 20:55:47 +0100
+  * Properly report 'no variant' errors for multis from roles. Reported by
+    osfameron.
+
 0.09  Thu, 15 Oct 2009 23:47:36 +0200
   * Depend on MooseX::Method::Signatures 0.29 because 0.28 slightly broken in a
     way that caused utter fail with multi methods. Reported by Justin Hunter.
